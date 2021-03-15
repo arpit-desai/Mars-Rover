@@ -26,6 +26,7 @@ namespace Mars_Rover
         /// </summary>
         private static string inputErr = "Please fix input error";
         private static string boundErr = "Incorrect bounds, please fix bounds";
+        private static string missingLines = "missing lines in input, please fix input";
 
         /// <summary>
         /// generic flag for rover position in bounds
@@ -131,14 +132,15 @@ namespace Mars_Rover
             //and an odd number of lines for input
             if ((inputLines.Length < 3) || (inputLines.Length % 2 == 0))
             {
-                MessageBox.Show("missing lines in input, please fix input");
+                MessageBox.Show(missingLines);
                 initialstart = false;
             }
 
             //set bounds
-            string firstLine = inputLines[0];
+            
             try
             {
+                string firstLine = inputLines[0];
                 int[] initialCoord = firstLine.Split(' ').Select(int.Parse).ToArray();
                 //check bound coordinates for proper formatting
                 if (initialCoord.Length == 2)
@@ -155,6 +157,11 @@ namespace Mars_Rover
             catch (FormatException)
             {
                 MessageBox.Show(boundErr);
+                initialstart = false;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show(missingLines);
                 initialstart = false;
             }
 

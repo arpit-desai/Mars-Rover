@@ -109,6 +109,7 @@ namespace Mars_Rover
             this.MaximizeBox = false;
             this.Name = "Rover";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mars Rover";
             this.ResumeLayout(false);
             this.PerformLayout();
