@@ -165,17 +165,19 @@ namespace Mars_Rover
                 initialstart = false;
             }
 
-
-            //check initial rover position for proper formatting
-            string[] tempSecondLine = inputLines[1].Split(" ");
-            if (tempSecondLine.Length != 3 || tempSecondLine[2] == "")
+            if (initialstart == true)
             {
-                MessageBox.Show("Incorrect initial coordinates");
-                initialstart = false;
-            }
+                //check initial rover position for proper formatting
+                string[] tempSecondLine = inputLines[1].Split(" ");
+                if (tempSecondLine.Length != 3 || tempSecondLine[2] == "")
+                {
+                    MessageBox.Show("Incorrect initial coordinates");
+                    initialstart = false;
+                }
 
-            //check if initial rover position is within bounds set
-            initialstart = checkRoverPosition(maxX, maxY, Int32.Parse(tempSecondLine[0]), Int32.Parse(tempSecondLine[1]));
+                //check if initial rover position is within bounds set
+                initialstart = checkRoverPosition(maxX, maxY, Int32.Parse(tempSecondLine[0]), Int32.Parse(tempSecondLine[1]));
+            }
 
 
             //execute the commands for the rover if no errors found in initial checks
